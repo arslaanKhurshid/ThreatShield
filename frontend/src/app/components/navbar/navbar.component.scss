@@ -1,0 +1,215 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1a237e;
+  color: white;
+  padding: 0 20px;
+  height: 70px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  
+  .navbar-brand {
+    a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: white;
+      
+      .logo {
+        height: 3rem;
+        margin-right: 10px;
+        border-radius: 50px;
+      }
+      
+      span {
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+    }
+  }
+  
+  .navbar-menu {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    margin-left: 40px;
+    
+    .navbar-links {
+      display: flex;
+      
+      a {
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        height: 70px;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.8);
+        transition: all 0.3s ease;
+        position: relative;
+        
+        mat-icon {
+          margin-right: 8px;
+          font-size: 20px;
+        }
+        
+        &:hover, &.active {
+          color: white;
+          background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        &.active::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background-color: #4caf50;
+        }
+      }
+    }
+    
+    .navbar-user {
+      display: flex;
+      align-items: center;
+      position: relative;
+      
+      .user-profile {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+        
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .avatar {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          margin-right: 10px;
+          object-fit: cover;
+        }
+        
+        .user-info {
+          display: flex;
+          flex-direction: column;
+          margin-right: 10px;
+          
+          .user-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+          }
+          
+          .user-role {
+            font-size: 0.8rem;
+            opacity: 0.8;
+          }
+        }
+        
+        mat-icon {
+          font-size: 20px;
+        }
+      }
+
+      .user-dropdown {
+        position: absolute;
+        top: 105%;
+        right: 0;
+        background-color: #e4e4e4;
+        border-radius: 4px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        min-width: 150px;
+        padding: 8px 0;
+        
+        .logout-button {
+          display: block;
+          width: 100%;
+          padding: 8px 16px;
+          background: none;
+          border: none;
+          color: #000000;
+          text-align: left;
+          font-size: 0.9rem;
+          font-weight: 100;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          margin-left: 10px;
+          
+          &:hover {
+          color: #1d1d1d;
+          transform: scale(1.1);
+          }
+        }
+      }
+    }
+  }
+  
+  .navbar-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    
+    mat-icon {
+      font-size: 24px;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .navbar-menu {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      right: 0;
+      background-color: #1a237e;
+      flex-direction: column;
+      padding: 20px;
+      margin-left: 0;
+      transform: translateY(-100%);
+      opacity: 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      
+      &.active {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      
+      .navbar-links {
+        flex-direction: column;
+        
+        a {
+          height: auto;
+          padding: 15px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+      }
+      
+      .navbar-user {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+        .user-dropdown {
+          position: static;
+          box-shadow: none;
+          background: #ffffff;
+          padding: 8px 0;
+        }
+      }
+    }
+    
+    .navbar-toggle {
+      display: block;
+    }
+  }
+}

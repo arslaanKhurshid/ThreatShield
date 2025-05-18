@@ -1,0 +1,91 @@
+<div class="alerts-container">
+  <h1 class="title">Alerts Dashboard</h1>
+  <div class="search-bar">
+    <input type="text" [(ngModel)]="searchQuery" (input)="searchAlerts()" placeholder="Search by ID, Rule ID, or Severity" />
+  </div>
+  <table class="alerts-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Rule ID</th>
+        <th>Severity</th>
+        <th>Timestamp</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (alert of displayedAlerts; track alert.id) {
+        <tr (click)="openAlertDetails(alert)">
+          <td>{{ alert.id }}</td>
+          <td>{{ alert.rule_id }}</td>
+          <td class="severity-cell">
+            <span class="severity-dot {{ alert.severity.toLowerCase() }}"></span>
+            {{ alert.severity }}
+          </td>
+          <td>{{ alert.timestamp }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  @if (isLoading) {
+    <div class="loading-spinner">
+      <div class="spinner"></div>
+    </div>
+  }
+
+  @if (error) {
+    <div class="error-message">{{ error }}</div>
+  }
+
+  <div class="pagination">
+    <button class="first" (click)="changePage(1)" [disabled]="currentPage === 1">
+      <mat-icon>first_page</mat-icon> First
+    </button>
+    <button class="previous" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">
+      <mat-icon>chevron_left</mat-icon> Previous
+    </button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button class="next" (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">
+      <mat-icon>chevron_right</mat-icon> Next
+    </button>
+    <button class="last" (click)="changePage(totalPages)" [disabled]="currentPage === totalPages">
+      <mat-icon>last_page</mat-icon> Last
+    </button>
+  </div>
+</div>
+
+@if (selectedAlert) {
+  <div class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Alert Details</h2>
+        <button class="close-button" (click)="closeAlertDetails()">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="detail-item">
+          <strong>ID:</strong> {{ selectedAlert.id }}
+        </div>
+        <div class="detail-item">
+          <strong>Rule ID:</strong> {{ selectedAlert.rule_id }}
+        </div>
+        <div class="detail-item">
+          <strong>Severity:</strong> {{ selectedAlert.severity }}
+        </div>
+        <div class="detail-item">
+          <strong>Timestamp:</strong> {{ selectedAlert.timestamp }}
+        </div>
+        <div class="detail-item">
+          <strong>Details:</strong>
+          <ul>
+            @for (key of objectKeys(selectedAlert.details); track key) {
+              <li>{{ key }}: {{ selectedAlert.details[key] }}</li>
+            }
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button (click)="closeAlertDetails()">Close</button>
+      </div>
+    </div>
+  </div>
+}

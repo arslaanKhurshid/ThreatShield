@@ -1,0 +1,129 @@
+<!-- <div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <img src="assets/logo.svg" alt="ThreatShield Logo" class="logo">
+      <h2>Welcome Back</h2>
+      <p>Sign in to your ThreatShield dashboard</p>
+    </div>
+    
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input 
+          type="email" 
+          id="email" 
+          formControlName="email" 
+          placeholder="Enter your email"
+          [ngClass]="{'invalid': loginForm.get('email')?.invalid && loginForm.get('email')?.touched}">
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error-message">
+          Please enter a valid email address
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input 
+          type="password" 
+          id="password" 
+          formControlName="password" 
+          placeholder="Enter your password"
+          [ngClass]="{'invalid': loginForm.get('password')?.invalid && loginForm.get('password')?.touched}">
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error-message">
+          Password is required
+        </div>
+      </div>
+      
+      <div class="form-options">
+        <div class="remember-me">
+          <input type="checkbox" id="rememberMe" formControlName="rememberMe">
+          <label for="rememberMe">Remember me</label>
+        </div>
+        <a href="#" class="forgot-password">Forgot password?</a>
+      </div>
+      
+      <button type="submit" class="login-button" [disabled]="loginForm.invalid || isLoading">
+        <span *ngIf="!isLoading">Sign In</span>
+        <span *ngIf="isLoading">Signing In...</span>
+      </button>
+    </form>
+    
+    <div class="login-footer">
+      <p>Don't have an account? <a href="#">Contact us</a> to get started.</p>
+    </div>
+  </div>
+  
+  <div class="login-background">
+    <div class="background-overlay"></div>
+  </div>
+</div> -->
+
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <img src="assets/logo.svg" alt="ThreatShield Logo" class="logo">
+      <h2>Welcome Back</h2>
+      <p>Sign in to your ThreatShield dashboard</p>
+    </div>
+    
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input 
+          type="email" 
+          id="email" 
+          formControlName="email" 
+          placeholder="Enter your email"
+          [ngClass]="{'invalid': loginForm.get('email')?.invalid && loginForm.get('email')?.touched}">
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error-message">
+          Please enter a valid email address
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input 
+          type="password" 
+          id="password" 
+          formControlName="password" 
+          placeholder="Enter your password"
+          [ngClass]="{'invalid': loginForm.get('password')?.invalid && loginForm.get('password')?.touched}">
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error-message">
+          Password is required
+        </div>
+      </div>
+      
+      <div class="form-options">
+        <div class="remember-me">
+          <input type="checkbox" id="rememberMe" formControlName="rememberMe">
+          <label for="rememberMe">Remember me</label>
+        </div>
+        <a href="#" class="forgot-password">Forgot password?</a>
+      </div>
+      
+      <button type="submit" class="login-button" [disabled]="loginForm.invalid || isLoading">
+        <span *ngIf="!isLoading">Sign In</span>
+        <span *ngIf="isLoading">Signing In...</span>
+      </button>
+    </form>
+    
+    <div class="login-footer">
+      <p>Don't have an account? <a href="#">Contact us</a> to get started.</p>
+    </div>
+  </div>
+  
+  <div class="login-background">
+    <div class="background-overlay"></div>
+    <div class="radar-container">
+      <div class="radar-circle"></div>
+      <div class="radar-circle"></div>
+      <div class="radar-circle"></div>
+      <div class="radar-sweep"></div>
+      <div class="data-node data-node-1"></div>
+      <div class="data-node data-node-2"></div>
+      <div class="data-node data-node-3"></div>
+      <div class="data-node data-node-4"></div>
+      <div class="data-node data-node-5 threat"></div>
+      <div class="data-node data-node-6 threat"></div>
+    </div>
+  </div>
+</div>

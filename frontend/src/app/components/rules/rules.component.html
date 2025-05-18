@@ -1,0 +1,96 @@
+<div class="rules-container">
+  <h1 class="title">Rules Dashboard</h1>
+  <div class="search-bar">
+    <input type="text" [(ngModel)]="searchQuery" (input)="searchRules()" placeholder="Search by ID, Name, or Query" />
+  </div>
+  <table class="rules-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Query</th>
+        <th>Enabled</th>
+        <th>Exclusion List</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (rule of displayedRules; track rule.id) {
+        <tr (click)="openRuleDetails(rule)">
+          <td>{{ rule.id }}</td>
+          <td>{{ rule.name }}</td>
+          <td>{{ rule.query }}</td>
+          <td class="enabled-cell">
+            <span class="enabled-dot {{ rule.enabled }}"></span>
+            {{ rule.enabled ? 'Yes' : 'No' }}
+          </td>
+          <td>{{ getExclusionListCount(rule.exclusion_list) }} items</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  @if (isLoading) {
+    <div class="loading-spinner">
+      <div class="spinner"></div>
+    </div>
+  }
+
+  @if (error) {
+    <div class="error-message">{{ error }}</div>
+  }
+
+  <div class="pagination">
+    <button class="first" (click)="changePage(1)" [disabled]="currentPage === 1">
+      <mat-icon>first_page</mat-icon> First
+    </button>
+    <button class="previous" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">
+      <mat-icon>chevron_left</mat-icon> Previous
+    </button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button class="next" (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">
+      <mat-icon>chevron_right</mat-icon> Next
+    </button>
+    <button class="last" (click)="changePage(totalPages)" [disabled]="currentPage === totalPages">
+      <mat-icon>last_page</mat-icon> Last
+    </button>
+  </div>
+</div>
+
+@if (selectedRule) {
+  <div class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Rule Details</h2>
+        <button class="close-button" (click)="closeRuleDetails()">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="detail-item">
+          <strong>ID:</strong> {{ selectedRule.id }}
+        </div>
+        <div class="detail-item">
+          <strong>Name:</strong> {{ selectedRule.name }}
+        </div>
+        <div class="detail-item">
+          <strong>Query:</strong> {{ selectedRule.query }}
+        </div>
+        <div class="detail-item">
+          <strong>Enabled:</strong> {{ selectedRule.enabled ? 'Yes' : 'No' }}
+        </div>
+        <div class="detail-item">
+          <strong>Exclusion List:</strong>
+          <ul>
+            @for (item of selectedRule.exclusion_list; track item) {
+              <li>{{ item }}</li>
+            }
+            @if (!selectedRule.exclusion_list || selectedRule.exclusion_list.length === 0) {
+              <li>None</li>
+            }
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button (click)="closeRuleDetails()">Close</button>
+      </div>
+    </div>
+  </div>
+}

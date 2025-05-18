@@ -1,0 +1,273 @@
+
+
+.login-container {
+  display: flex;
+  height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+  .login-card {
+    flex: 1;
+    max-width: 450px;
+    padding: 60px 40px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    
+    .login-header {
+      text-align: center;
+      margin-bottom: 40px;
+      
+      .logo {
+        height: 8rem;
+        margin-bottom: -15px;
+      }
+      
+      h2 {
+        font-size: 1.8rem;
+        color: #1a237e;
+        margin-bottom: 10px;
+      }
+      
+      p {
+        color: #666;
+      }
+    }
+    
+    .login-form {
+      .form-group {
+        margin-bottom: 20px;
+        
+        label {
+          display: block;
+          margin-bottom: 8px;
+          font-weight: 600;
+          color: #444;
+        }
+        
+        input {
+          width: 100%;
+          padding: 12px 15px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          font-size: 1rem;
+          transition: border-color 0.3s ease;
+          
+          &:focus {
+            outline: none;
+            border-color: #1a237e;
+          }
+          
+          &.invalid {
+            border-color: #f44336;
+          }
+        }
+        
+        .error-message {
+          color: #f44336;
+          font-size: 0.8rem;
+          margin-top: 5px;
+        }
+      }
+      
+      .form-options {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+        
+        .remember-me {
+          display: flex;
+          align-items: center;
+          
+          input {
+            margin-right: 8px;
+          }
+        }
+        
+        .forgot-password {
+          color: #1a237e;
+          text-decoration: none;
+          font-size: 0.9rem;
+          
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+      
+      .login-button {
+        width: 100%;
+        padding: 14px;
+        background-color: #1a237e;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        
+        &:hover {
+          background-color: #283593;
+        }
+        
+        &:disabled {
+          background-color: #b0bec5;
+          cursor: not-allowed;
+        }
+      }
+    }
+    
+    .login-footer {
+      text-align: center;
+      margin-top: 30px;
+      color: #666;
+      font-size: 0.9rem;
+      
+      a {
+        color: #1a237e;
+        text-decoration: none;
+        
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  
+  .login-background {
+    flex: 1;
+    position: relative;
+    background: linear-gradient(135deg, #0d1a4d 0%, #1a237e 100%);
+    overflow: hidden;
+
+    .background-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      // background: rgba(255, 255, 255, 0.65);
+      z-index: 2;
+    }
+
+    .radar-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 400px;
+      height: 400px;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+
+      .radar-circle {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 2px solid rgba(63, 81, 181, 0.5);
+        border-radius: 50%;
+        animation: radar-pulse 4s ease-in-out infinite;
+      }
+
+      .radar-circle:nth-child(2) {
+        animation-delay: 1.33s;
+        transform: scale(0.8);
+      }
+
+      .radar-circle:nth-child(3) {
+        animation-delay: 2.66s;
+        transform: scale(0.6);
+      }
+
+      .radar-sweep {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 50%;
+        height: 100%;
+        background: conic-gradient(
+          from 0deg at 0% 50%,
+          rgba(63, 81, 181, 0.3) 0deg,
+          transparent 30deg,
+          transparent 360deg
+        );
+        transform-origin: left center;
+        animation: radar-sweep 6s linear infinite;
+      }
+
+      .data-node {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: #ffffff;
+        border-radius: 50%;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+        animation: node-fade 3s ease-in-out infinite;
+      }
+
+      .data-node.threat {
+        background: #f44336;
+        box-shadow: 0 0 20px rgba(244, 67, 54, 0.8);
+        animation: threat-pulse 2s ease-in-out infinite;
+      }
+
+      .data-node-1 { top: 20%; left: 70%; animation-delay: 0s; }
+      .data-node-2 { top: 30%; left: 30%; animation-delay: 1s; }
+      .data-node-3 { top: 60%; left: 80%; animation-delay: 2s; }
+      .data-node-4 { top: 70%; left: 40%; animation-delay: 3s; }
+      .data-node-5.threat { top: 40%; left: 60%; animation-delay: 0.5s; }
+      .data-node-6.threat { top: 80%; left: 20%; animation-delay: 1.5s; }
+    }
+  }
+}
+
+@keyframes radar-pulse {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.6);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.5;
+    transform: scale(0.6);
+  }
+}
+
+@keyframes radar-sweep {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes node-fade {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes threat-pulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.4);
+  }
+}

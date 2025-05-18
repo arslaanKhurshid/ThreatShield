@@ -1,0 +1,94 @@
+<!-- <nav class="navbar">
+  <div class="navbar-brand">
+    <a routerLink="/dashboard">
+      <img src="assets/logo.png"  alt="logo" class="logo">
+      <span>ThreatShield</span>
+    </a>
+  </div>
+  
+  <div class="navbar-menu" [class.active]="isMenuOpen">
+    <div class="navbar-links">
+      <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <mat-icon>dashboard</mat-icon>
+        <span>Dashboard</span>
+      </a>
+      <a routerLink="/dashboard/logs" routerLinkActive="active">
+        <mat-icon>list_alt</mat-icon>
+        <span>Logs</span>
+      </a>
+      <a routerLink="/dashboard/alerts" routerLinkActive="active">
+        <mat-icon>notifications</mat-icon>
+        <span>Alerts</span>
+      </a>
+      <a routerLink="/dashboard/rules" routerLinkActive="active">
+        <mat-icon>security</mat-icon>
+        <span>Rules</span>
+      </a>
+    </div>
+    
+    <div class="navbar-user">
+      <div class="user-profile">
+        <img src="assets/profile.png" alt="User Avatar" class="avatar">
+        <div class="user-info">
+          <span class="user-name">Admin User</span>
+          <span class="user-role">Security Admin</span>
+        </div>
+        <mat-icon>arrow_drop_down</mat-icon>
+      </div>
+    </div>
+  </div>
+  
+  <button class="navbar-toggle" (click)="toggleMenu()">
+    <mat-icon>{{ isMenuOpen ? 'close' : 'menu' }}</mat-icon>
+  </button>
+</nav> -->
+
+<nav class="navbar">
+  <div class="navbar-brand">
+    <a routerLink="/dashboard">
+      <img src="assets/logowh.png" alt="logo" class="logo">
+      <span>ThreatShield</span>
+    </a>
+  </div>
+  
+  <div class="navbar-menu" [class.active]="isMenuOpen">
+    <div class="navbar-links">
+      <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <mat-icon>dashboard</mat-icon>
+        <span>Dashboard</span>
+      </a>
+      <a routerLink="/dashboard/logs" routerLinkActive="active">
+        <mat-icon>list_alt</mat-icon>
+        <span>Logs</span>
+      </a>
+      <a routerLink="/dashboard/alerts" routerLinkActive="active">
+        <mat-icon>notifications</mat-icon>
+        <span>Alerts</span>
+      </a>
+      <a routerLink="/dashboard/rules" routerLinkActive="active">
+        <mat-icon>security</mat-icon>
+        <span>Rules</span>
+      </a>
+    </div>
+    
+    <div class="navbar-user">
+      <div class="user-profile" (click)="toggleDropdown($event)">
+        <img src="assets/profile.png" alt="User Avatar" class="avatar">
+        <div class="user-info">
+          <span class="user-name">Admin User</span>
+          <span class="user-role">Security Admin</span>
+        </div>
+        <mat-icon>arrow_drop_down</mat-icon>
+      </div>
+      @if (isDropdownOpen) {
+        <div class="user-dropdown" #dropdown>
+          <button class="logout-button" (click)="logout()">Logout</button>
+        </div>
+      }
+    </div>
+  </div>
+  
+  <button class="navbar-toggle" (click)="toggleMenu()">
+    <mat-icon>{{ isMenuOpen ? 'close' : 'menu' }}</mat-icon>
+  </button>
+</nav>

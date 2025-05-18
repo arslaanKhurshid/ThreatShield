@@ -1,0 +1,12 @@
+"venv/\nnode_modules/\n.dist/" 
+venv
+frontend\node_modules
+frontend\.vscode
+backend\.env
+frontend\.angular
+frontend\.vscode
+backend\app\__pycache__
+frontend\src\assets\TDS_DEMO-old.mp4
+frontend\src\assets\TDS_DEMO.mp4
+frontend/src/assets/TDS_DEMO-old.mp4
+frontend/src/assets/TDS_DEMO.mp4

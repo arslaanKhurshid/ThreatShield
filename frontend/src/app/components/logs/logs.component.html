@@ -1,0 +1,92 @@
+
+<div class="container-logs">
+  
+<div class="logs-container">
+  <h1 class="title">Logs Dashboard</h1>
+  <div class="search-bar">
+    <input type="text" [(ngModel)]="searchQuery" (input)="searchLogs()" placeholder="Search by ID, Source IP, or Event Type" />
+  </div>
+  <table class="logs-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Timestamp</th>
+        <th>Source IP</th>
+        <th>Event Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (log of displayedLogs; track log.id) {
+        <tr (click)="openLogDetails(log)">
+          <td>{{ log.id }}</td>
+          <td>{{ log.timestamp }}</td>
+          <td>{{ log.source_ip }}</td>
+          <td>{{ log.event_type }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  @if (isLoading) {
+    <div class="loading-spinner">
+      <div class="spinner"></div>
+    </div>
+  }
+
+  @if (error) {
+    <div class="error-message">{{ error }}</div>
+  }
+
+  <div class="pagination">
+    <button class="first" (click)="changePage(1)" [disabled]="currentPage === 1">
+      <mat-icon>first_page</mat-icon> First
+    </button>
+    <button class="previous" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">
+      <mat-icon>chevron_left</mat-icon> Previous
+    </button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button class="next" (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">
+      <mat-icon>chevron_right</mat-icon> Next
+    </button>
+    <button class="last" (click)="changePage(totalPages)" [disabled]="currentPage === totalPages">
+      <mat-icon>last_page</mat-icon> Last
+    </button>
+  </div>
+</div>
+
+@if (selectedLog) {
+  <div class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Log Details</h2>
+        <button class="close-button" (click)="closeLogDetails()">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="detail-item">
+          <strong>ID:</strong> {{ selectedLog.id }}
+        </div>
+        <div class="detail-item">
+          <strong>Timestamp:</strong> {{ selectedLog.timestamp }}
+        </div>
+        <div class="detail-item">
+          <strong>Source IP:</strong> {{ selectedLog.source_ip }}
+        </div>
+        <div class="detail-item">
+          <strong>Event Type:</strong> {{ selectedLog.event_type }}
+        </div>
+        <div class="detail-item">
+          <strong>Details:</strong>
+          <ul>
+            @for (key of objectKeys(selectedLog.details); track key) {
+              <li>{{ key }}: {{ selectedLog.details[key] }}</li>
+            }
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button (click)="closeLogDetails()">Close</button>
+      </div>
+    </div>
+  </div>
+}
+</div>

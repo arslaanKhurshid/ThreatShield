@@ -1,0 +1,244 @@
+
+<div class="dashboard-home">
+  <div class="dashboard-header">
+    <h1>Threat Detection Dashboard</h1>
+    <p>Overview of your security posture and recent activities</p>
+  </div>
+
+  @if (error) {
+    <div class="error-message">{{ error }}</div>
+  }
+
+  @if (!isLoading) {
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-content">
+          <div class="stat-icon" style="background-color: #3f51b5;">
+            <mat-icon>receipt_long</mat-icon>
+          </div>
+          <div class="stat-info">
+            <h3>{{ stats.totalLogs }}</h3>
+            <p>Total Logs</p>
+          </div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-content">
+          <div class="stat-icon" style="background-color: #f44336;">
+            <mat-icon>warning</mat-icon>
+          </div>
+          <div class="stat-info">
+            <h3>{{ stats.criticalAlerts }}</h3>
+            <p>Critical Alerts</p>
+          </div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-content">
+          <div class="stat-icon" style="background-color: #ff9800;">
+            <mat-icon>error_outline</mat-icon>
+          </div>
+          <div class="stat-info">
+            <h3>{{ stats.highAlerts }}</h3>
+            <p>High Alerts</p>
+          </div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-content">
+          <div class="stat-icon" style="background-color: #ffeb3b;">
+            <mat-icon>info</mat-icon>
+          </div>
+          <div class="stat-info">
+            <h3>{{ stats.mediumAlerts }}</h3>
+            <p>Medium Alerts</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard-row">
+      <div class="chart-container">
+        <h3>Threat Activity</h3>
+        <div class="bar-chart">
+          <div class="bar critical" [style.height.%]="chartHeights.critical">
+            <span class="bar-label">Critical</span>
+          </div>
+          <div class="bar high" [style.height.%]="chartHeights.high">
+            <span class="bar-label">High</span>
+          </div>
+          <div class="bar medium" [style.height.%]="chartHeights.medium">
+            <span class="bar-label">Medium</span>
+          </div>
+        </div>
+      </div>
+      <div class="activities-container">
+        <h3>Recent Activities</h3>
+        <div class="timeline">
+          @for (activity of recentActivities; track activity.timestamp) {
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">{{ activity.content }}</div>
+              <div class="timeline-timestamp">{{ activity.timestamp | date:'short' }}</div>
+            </div>
+          }
+          @if (!recentActivities.length) {
+            <div class="timeline-item">
+              <div class="timeline-content">No recent activities</div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard-row">
+      <div class="recent-logs">
+        <h3>Recent Logs</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Timestamp</th>
+              <th>Source IP</th>
+              <th>Event Type</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (log of displayedLogs; track log.id) {
+              <tr>
+                <td>{{ log.timestamp | date:'short' }}</td>
+                <td>{{ log.source_ip }}</td>
+                <td>{{ log.event_type }}</td>
+                <td>
+                  <button (click)="openLogDetails(log)">
+                    <mat-icon>visibility</mat-icon>
+                  </button>
+                </td>
+              </tr>
+            }
+            @if (!displayedLogs.length) {
+              <tr>
+                <td colspan="4">No recent logs</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+      <div class="recent-alerts">
+        <h3>Recent Alerts</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Timestamp</th>
+              <th>Severity</th>
+              <th>Rule ID</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (alert of displayedAlerts; track alert.id) {
+              <tr>
+                <td>{{ alert.timestamp | date:'short' }}</td>
+                <td class="severity-cell">
+                  <span class="severity-dot {{ getSeverityClass(alert.severity) }}"></span>
+                  {{ alert.severity | titlecase }}
+                </td>
+                <td>{{ alert.rule_id }}</td>
+                <td>
+                  <button (click)="openAlertDetails(alert)">
+                    <mat-icon>visibility</mat-icon>
+                  </button>
+                </td>
+              </tr>
+            }
+            @if (!displayedAlerts.length) {
+              <tr>
+                <td colspan="4">No recent alerts</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  } @else {
+    <div class="stats-grid">
+      @for (i of [1,2,3,4]; track i) {
+        <div class="loading-card">
+          <div class="spinner"></div>
+        </div>
+      }
+    </div>
+  }
+
+  @if (selectedLog) {
+    <div class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Log Details</h2>
+          <button class="close-button" (click)="closeLogDetails()">×</button>
+        </div>
+        <div class="modal-body">
+          <div class="detail-item">
+            <strong>ID:</strong> {{ selectedLog.id }}
+          </div>
+          <div class="detail-item">
+            <strong>Timestamp:</strong> {{ selectedLog.timestamp | date:'short' }}
+          </div>
+          <div class="detail-item">
+            <strong>Source IP:</strong> {{ selectedLog.source_ip }}
+          </div>
+          <div class="detail-item">
+            <strong>Event Type:</strong> {{ selectedLog.event_type }}
+          </div>
+          <div class="detail-item">
+            <strong>Details:</strong>
+            <ul>
+              @for (key of objectKeys(selectedLog.details); track key) {
+                <li>{{ key }}: {{ selectedLog.details[key] }}</li>
+              }
+            </ul>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button (click)="closeLogDetails()">Close</button>
+        </div>
+      </div>
+    </div>
+  }
+
+  @if (selectedAlert) {
+    <div class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Alert Details</h2>
+          <button class="close-button" (click)="closeAlertDetails()">×</button>
+        </div>
+        <div class="modal-body">
+          <div class="detail-item">
+            <strong>ID:</strong> {{ selectedAlert.id }}
+          </div>
+          <div class="detail-item">
+            <strong>Timestamp:</strong> {{ selectedAlert.timestamp | date:'short' }}
+          </div>
+          <div class="detail-item">
+            <strong>Severity:</strong> {{ selectedAlert.severity | titlecase }}
+          </div>
+          <div class="detail-item">
+            <strong>Rule ID:</strong> {{ selectedAlert.rule_id }}
+          </div>
+          <div class="detail-item">
+            <strong>Details:</strong>
+            <ul>
+              @for (key of objectKeys(selectedAlert.details); track key) {
+                <li>{{ key }}: {{ selectedAlert.details[key] }}</li>
+              }
+            </ul>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button (click)="closeAlertDetails()">Close</button>
+        </div>
+      </div>
+    </div>
+  }
+</div>
