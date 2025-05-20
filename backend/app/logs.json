@@ -407,5 +407,336 @@
       "resource": "/sensitive/data",
       "user": "unknown"
     }
+  },
+  {
+    "id": "8f1ab5a5-f35b-42fe-a144-4f0f5b9a565a",
+    "timestamp": "2025-04-11T10:16:37",
+    "source_ip": "192.168.1.102",
+    "event_type": "login",
+    "details": {
+      "event": "User login attempt",
+      "user": "guest",
+      "status": "success"
+    }
+  },
+  {
+    "id": "ab697498-17ff-4bd3-aa83-d7763b715323",
+    "timestamp": "2025-04-11T10:16:43",
+    "source_ip": "10.0.0.50",
+    "event_type": "access",
+    "details": {
+      "event": "Database query",
+      "user": "jdoe"
+    }
+  },
+  {
+    "id": "1b99070e-67be-420b-aa3d-80018aab562d",
+    "timestamp": "2025-04-11T10:16:52",
+    "source_ip": "192.168.1.103",
+    "event_type": "login",
+    "details": {
+      "event": "User login attempt",
+      "user": "admin",
+      "status": "success"
+    }
+  },
+  {
+    "id": "b285502f-c2bb-4172-8b49-b0041c572ec5",
+    "timestamp": "2025-04-11T10:17:02",
+    "source_ip": "10.0.0.50",
+    "event_type": "login",
+    "details": {
+      "event": "User login attempt",
+      "user": "unknown",
+      "status": "success"
+    }
+  },
+  {
+    "id": "89af2619-efdb-40ea-8c8a-71f422528c9f",
+    "timestamp": "2025-04-11T10:17:11",
+    "source_ip": "10.0.0.51",
+    "event_type": "access",
+    "details": {
+      "event": "File downloaded",
+      "user": "unknown"
+    }
+  },
+  {
+    "id": "4f96024b-4cbe-4dbc-8f5f-f53845809449",
+    "timestamp": "2025-04-11T10:17:18",
+    "source_ip": "172.16.0.10",
+    "event_type": "error",
+    "details": {
+      "event": "Server timeout",
+      "error_code": "ACCESS_003",
+      "resource": "/sensitive/data",
+      "user": "dbadmin"
+    }
+  },
+  {
+    "id": "263c6462-da3e-488f-9e3f-9c9ff4e6a01d",
+    "timestamp": "2025-04-11T10:17:25",
+    "source_ip": "192.168.1.103",
+    "event_type": "login",
+    "details": {
+      "event": "User login attempt",
+      "user": "unknown",
+      "status": "success"
+    }
+  },
+  {
+    "id": "54f48ef3-714f-4ed4-878c-f23a20acb91d",
+    "timestamp": "2025-04-11T10:17:32",
+    "source_ip": "172.16.0.11",
+    "event_type": "login",
+    "details": {
+      "event": "User login attempt",
+      "user": "admin",
+      "status": "success"
+    }
+  },
+  {
+    "id": "07fff74d-d050-41f2-ac3b-1d70883892e9",
+    "timestamp": "2025-04-11T10:17:41",
+    "source_ip": "10.0.0.50",
+    "event_type": "error",
+    "details": {
+      "event": "Server timeout",
+      "error_code": "ACCESS_003",
+      "resource": "/public/index.html",
+      "user": "dbadmin"
+    }
+  },
+  {
+    "id": "05abf285-2b72-4277-837b-cab969e1509b",
+    "timestamp": "2025-04-11T10:17:50",
+    "source_ip": "10.0.0.51",
+    "event_type": "error",
+    "details": {
+      "event": "Access denied",
+      "error_code": "TIMEOUT_001",
+      "resource": "/api/v1/data",
+      "user": "admin"
+    }
+  },
+  {
+    "id": "88de79ed-7f4f-4230-8e28-9f4214133682",
+    "timestamp": "2025-04-11T10:17:59",
+    "source_ip": "172.16.0.11",
+    "event_type": "access",
+    "details": {
+      "event": "File accessed",
+      "user": "unknown"
+    }
+  },
+  {
+    "id": "9b705537-681f-4670-932b-b807f02e4f98",
+    "timestamp": "2025-04-11T10:18:06",
+    "source_ip": "192.168.1.101",
+    "event_type": "login",
+    "details": {
+      "event": "User login attempt",
+      "user": "guest",
+      "status": "success"
+    }
+  },
+  {
+    "id": "62d078d7-b637-44d5-884a-ef587d2b340c",
+    "timestamp": "2025-04-11T10:18:12",
+    "source_ip": "192.168.1.101",
+    "event_type": "access",
+    "details": {
+      "event": "File downloaded",
+      "user": "dbadmin"
+    }
+  },
+  {
+    "id": "86239f3d-9a6c-45dd-8d98-df2ab378fe3b",
+    "timestamp": "2025-04-11T10:18:19",
+    "source_ip": "172.16.0.10",
+    "event_type": "access",
+    "details": {
+      "event": "File downloaded",
+      "user": "testuser"
+    }
+  },
+  {
+    "id": "71782384-2046-4386-84da-24c4f6789e41",
+    "timestamp": "2025-04-11T10:18:24",
+    "source_ip": "192.168.1.102",
+    "event_type": "login",
+    "details": {
+      "event": "User login attempt",
+      "user": "unknown",
+      "status": "failed"
+    }
+  },
+  {
+    "id": "603b44df-a607-41b8-b6fe-9e3fad39c790",
+    "timestamp": "2025-04-11T10:18:34",
+    "source_ip": "192.168.1.101",
+    "event_type": "error",
+    "details": {
+      "event": "Server timeout",
+      "error_code": "ACCESS_003",
+      "resource": "/sensitive/data",
+      "user": "jdoe"
+    }
+  },
+  {
+    "id": "f62a5065-7d66-4db7-9883-45a7c5278e02",
+    "timestamp": "2025-04-11T10:18:40",
+    "source_ip": "10.0.0.50",
+    "event_type": "login",
+    "details": {
+      "event": "User login attempt",
+      "user": "admin",
+      "status": "success"
+    }
+  },
+  {
+    "id": "c1540b55-eb2d-4c23-851a-54e8f6378f9f",
+    "timestamp": "2025-04-11T10:18:48",
+    "source_ip": "192.168.1.103",
+    "event_type": "error",
+    "details": {
+      "event": "Access denied",
+      "error_code": "AUTH_002",
+      "resource": "/downloads/report.pdf",
+      "user": "dbadmin"
+    }
+  },
+  {
+    "id": "eed2070a-6104-46d8-a4e0-58c939a7dcf7",
+    "timestamp": "2025-04-11T10:18:57",
+    "source_ip": "10.0.0.51",
+    "event_type": "login",
+    "details": {
+      "event": "User login attempt",
+      "user": "jdoe",
+      "status": "failed"
+    }
+  },
+  {
+    "id": "b814b5c3-75e7-4f5c-9b81-ddafe76b12dd",
+    "timestamp": "2025-04-11T10:19:03",
+    "source_ip": "192.168.1.100",
+    "event_type": "error",
+    "details": {
+      "event": "Access denied",
+      "error_code": "AUTH_002",
+      "resource": "/sensitive/data",
+      "user": "unknown"
+    }
+  },
+  {
+    "id": "ad2a9d83-388f-4c83-be3a-402ceaf41207",
+    "timestamp": "2025-04-11T10:19:08",
+    "source_ip": "192.168.1.103",
+    "event_type": "error",
+    "details": {
+      "event": "Access denied",
+      "error_code": "TIMEOUT_001",
+      "resource": "/api/v1/data",
+      "user": "testuser"
+    }
+  },
+  {
+    "id": "075cd790-0d25-4dcf-bcf6-0f111005a231",
+    "timestamp": "2025-04-11T10:19:13",
+    "source_ip": "192.168.1.100",
+    "event_type": "error",
+    "details": {
+      "event": "Access denied",
+      "error_code": "ACCESS_003",
+      "resource": "/sensitive/data",
+      "user": "admin"
+    }
+  },
+  {
+    "id": "d41ed750-43b5-4596-b87f-8a02bbc522a0",
+    "timestamp": "2025-04-11T10:19:20",
+    "source_ip": "10.0.0.50",
+    "event_type": "access",
+    "details": {
+      "event": "File downloaded",
+      "user": "guest"
+    }
+  },
+  {
+    "id": "6f1a556f-0298-45ff-a959-611b7f8713ce",
+    "timestamp": "2025-04-11T10:19:30",
+    "source_ip": "192.168.1.102",
+    "event_type": "login",
+    "details": {
+      "event": "User login attempt",
+      "user": "guest",
+      "status": "success"
+    }
+  },
+  {
+    "id": "992da030-2293-46dd-843f-b23b3921b41a",
+    "timestamp": "2025-04-11T10:19:40",
+    "source_ip": "172.16.0.11",
+    "event_type": "error",
+    "details": {
+      "event": "Access denied",
+      "error_code": "AUTH_002",
+      "resource": "/public/index.html",
+      "user": "admin"
+    }
+  },
+  {
+    "id": "6d5102c5-0910-44b8-959f-20782a5fb1f5",
+    "timestamp": "2025-04-11T10:19:46",
+    "source_ip": "172.16.0.11",
+    "event_type": "login",
+    "details": {
+      "event": "User login attempt",
+      "user": "testuser",
+      "status": "failed"
+    }
+  },
+  {
+    "id": "de1f3924-63c0-42f9-8470-8a843bcb4e25",
+    "timestamp": "2025-04-11T10:19:52",
+    "source_ip": "192.168.1.102",
+    "event_type": "access",
+    "details": {
+      "event": "Database query",
+      "user": "admin"
+    }
+  },
+  {
+    "id": "9da55b93-c9eb-45ca-8bc9-16945e60991f",
+    "timestamp": "2025-04-11T10:20:01",
+    "source_ip": "172.16.0.10",
+    "event_type": "login",
+    "details": {
+      "event": "User login attempt",
+      "user": "testuser",
+      "status": "success"
+    }
+  },
+  {
+    "id": "57415c96-b5f8-4505-8df9-33db5a3b1804",
+    "timestamp": "2025-04-11T10:20:09",
+    "source_ip": "172.16.0.10",
+    "event_type": "login",
+    "details": {
+      "event": "User login attempt",
+      "user": "guest",
+      "status": "success"
+    }
+  },
+  {
+    "id": "e976d8d3-2925-4139-b08d-b1abfac18a59",
+    "timestamp": "2025-04-11T10:20:19",
+    "source_ip": "172.16.0.11",
+    "event_type": "access",
+    "details": {
+      "event": "File downloaded",
+      "user": "testuser"
+    }
   }
 ]
