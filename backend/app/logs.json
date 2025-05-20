@@ -373,5 +373,39 @@
       "event": "Database query",
       "user": "testuser"
     }
+  },
+  {
+    "id": "181a7aab-00d7-40bc-b2fd-c9aaa21fa5ce",
+    "timestamp": "2025-04-11T10:16:21",
+    "source_ip": "10.0.0.50",
+    "event_type": "error",
+    "details": {
+      "event": "Access denied",
+      "error_code": "AUTH_002",
+      "resource": "/public/index.html",
+      "user": "guest"
+    }
+  },
+  {
+    "id": "434bc0ed-6251-4144-baa8-818383c2dd70",
+    "timestamp": "2025-04-11T10:16:26",
+    "source_ip": "192.168.1.102",
+    "event_type": "access",
+    "details": {
+      "event": "Database query",
+      "user": "dbadmin"
+    }
+  },
+  {
+    "id": "16f30afa-6f57-427e-b46a-0044053fe6ff",
+    "timestamp": "2025-04-11T10:16:31",
+    "source_ip": "192.168.1.103",
+    "event_type": "error",
+    "details": {
+      "event": "Authentication error",
+      "error_code": "ACCESS_003",
+      "resource": "/sensitive/data",
+      "user": "unknown"
+    }
   }
 ]
