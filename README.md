@@ -15,9 +15,9 @@
 | Layer       | Technology                     |
 |-------------|--------------------------------|
 | **Frontend** | Angular                       |
-| **Backend**  | Python (FastAPI / Flask)      |
+| **Backend**  | Python (FastAPI)      |
 | **LLM**      | Groq API                      |
-| **Log Source** | Real-time logs (servers, apps) |
+| **Log Source** | Real-time logs (Json mock logs) |
 
 
 
